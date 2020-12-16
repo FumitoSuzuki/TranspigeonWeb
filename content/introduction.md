@@ -1,5 +1,5 @@
 ---
-title: Hello NUXTJS
+title: Hello Vue.js
 header-txt:
 footer-txt:
 ---

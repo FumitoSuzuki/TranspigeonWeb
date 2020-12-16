@@ -1,7 +1,6 @@
 ---
-title: PERFORMANT
+title: 融通が効く
+icon: vector-pen
 ---
 
-With Nuxt.js, your application will be optimized out of the box.  
-We do our best to build performant applications by utilizing Vue.js and Node.js best practices.  
-To squeeze every unnecessary bit out of your app Nuxt includes a bundle analyzer and lots of opportunities to fine-tune your app.
+ライブラリと完全な機能を備えたフレームワークの間で拡張できる徐々に採用可能なエコシステム

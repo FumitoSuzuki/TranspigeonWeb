@@ -1,13 +1,16 @@
-## The Intuitive Vue Framework
+---
+title: What is VueJS
+---
 
-Build your next Vue.js application with confidence using NuxtJS.  
-An open source framework making web development simple and powerful.
+__Vue__ (発音は / v j u ː / 、 view と同様）は  
+ユーザーインターフェイスを構築するための<strong>プログレッシブフレームワーク</strong>です。  
 
-```js
-export default {
-  ssr: true // default value
-}
-```
-```
-text sample text sample
-```
+他の一枚板(モノリシック: monolithic)なフレームワークとは異なり、  
+__Vue__ は少しずつ適用していけるように設計されています。  
+
+中核となるライブラリは view 層だけに焦点を当てています。  
+そのため、使い始めるのも、他のライブラリや既存のプロジェクトに統合するのも、  
+とても<strong>簡単</strong>です。  
+
+また、モダンなツールやサポートライブラリと併用することで、  
+洗練されたシングルページアプリケーションの開発も可能です。  

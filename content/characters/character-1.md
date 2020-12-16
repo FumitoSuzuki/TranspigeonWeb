@@ -1,7 +1,6 @@
 ---
-title: MODULAR
+title: 親しみやすい
+icon: window
 ---
 
-Nuxt is based on a powerful modular architecture.  
-You can choose from more than 50 modules to make your development faster and easier.  
-You don't have to reinvent the wheel to get PWA benefits, add Google Analytics to your page or generate a sitemap.
+すでに HTML、CSS そして JavaScript を知っていますか？ガイドを読んで、すぐにモノ作りを開始しましょう！

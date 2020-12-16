@@ -1,8 +1,8 @@
 ---
-title: ENJOYABLE
+title: 高性能
+icon: clipboard-check
 ---
 
-Our main focus is the Developer Experience.  
-We love Nuxt.js and continuously improve the framework so you love it too! 💚  
-Expect appealing solutions, descriptive error messages, powerful defaults and detailed documentation.  
-If questions or problems come up, our helpful community will help you out.
+20KB min+gzip ランタイム
+猛烈に速い Virtual DOM
+最小限の努力で最適化が可能

@@ -1,12 +1,14 @@
 <template>
   <section class="fullsize-box" v-bind="boxHeight">
-    <slot></slot>
+    <slot ref="box"></slot>
     <div
       v-show="false"
       class="bg-dark text-light p-2"
       style="position: absolute; left: 1rem; bottom: 1rem"
     >
-      <p v-for="(i, k) in heightParam" :key="k">{{ k }}: {{ i }}</p>
+      <p>Window: {{ getWindowHeight }}px</p>
+      <p>Client: {{ getClientHeight }}px</p>
+      <p>Scroll: {{ getScrollHeight }}px</p>
     </div>
   </section>
 </template>
@@ -14,77 +16,62 @@
 <script>
 export default {
   props: {
-    heightRatio: {
+    ratio: {
       type: Number,
       default: 100,
     },
   },
   data() {
-    return {
-      windowWidth: 0,
-      windowHeight: 0,
-      clientHeight: 0,
-      scrollHeight: 0,
-      heightParam: {},
-    }
+    return { boxHeight: false }
   },
   computed: {
-    boxHeight() {
-      let scrollHeight = this.scrollHeight
-      if (this.heightRatio === 100) {
-        if (this.scrollHeight === this.clientHeight) {
-          scrollHeight = this.windowHeight
+    getWindowWidth() {
+      return this.$window.width || false
+    },
+    getWindowHeight() {
+      return this.$window.height || false
+    },
+    getClientHeight() {
+      return this.$el ? this.$el.clientHeight : 0
+    },
+    getScrollHeight() {
+      return this.$el ? this.$el.scrollHeight : 0
+    },
+    getBoxHeight() {
+      const windowHeight = this.getWindowHeight
+      const clientHeight = this.getClientHeight
+      const scrollHeight = this.getScrollHeight
+      // Do not run if not mounted.
+      if (!windowHeight) return false
+      // iOS measures.
+      let innerHeight = scrollHeight
+      if (this.ratio === 100) {
+        if (scrollHeight === clientHeight) {
+          innerHeight = windowHeight
         }
       }
-
-      if (!this.windowHeight) return false
-      let height = Math.round((this.windowHeight * this.heightRatio) / 100)
-
-      if (scrollHeight <= height) {
-        height += 'px'
-      } else {
-        height = 'auto'
-      }
-
-      return { style: { '--boxHeight': height } }
+      // Calculate the ratio to window height.
+      const targetHeight = Math.round((windowHeight * this.ratio) / 100)
+      /*
+       * If the value of Scroll height is larger than height,
+       * set height to auto.
+       */
+      return innerHeight <= targetHeight ? `${targetHeight}px` : 'auto'
+    },
+  },
+  watch: {
+    getWindowWidth() {
+      this.setBoxHeight()
     },
   },
   mounted() {
-    this.setHeight()
-    this.setParams()
-    window.addEventListener('resize', this.setHeight)
-    window.addEventListener('resize', this.setParams)
+    this.setBoxHeight()
   },
   methods: {
-    setHeight() {
-      const windowWidth = this.$window.width
-      if (this.windowWidth === windowWidth) return false
-      this.windowWidth = this.$window.width
-      this.windowHeight = this.$window.height
-      if (this.$el) {
-        this.clientHeight = this.$el.clientHeight
-        this.scrollHeight = this.$el.scrollHeight
+    setBoxHeight() {
+      this.boxHeight = {
+        style: { '--boxHeight': this.getBoxHeight },
       }
-    },
-    setParams() {
-      const param = {
-        oldWidth: this.windowWidth,
-        newWidth: this.$window.width,
-        clientHeight: this.$el.clientHeight,
-        offsetHeight: this.$el.offsetHeight,
-        scrollHeight: this.$el.scrollHeight,
-        innerHeight: global.innerHeight,
-        outerHeight: global.outerHeight,
-        availHeight: global.screen.availHeight,
-        screenHeight: global.screen.height,
-        refs: {
-          // refClientHeight: this.$refs.childebox.clientHeight,
-          // refOffsetHeight: this.$refs.childebox.offsetHeight,
-          // refScrollHeight: this.$refs.childebox.scrollHeight,
-          // refInnerHeight: this.$refs.childebox.outerHeight,
-        },
-      }
-      this.heightParam = param
     },
   },
 }
