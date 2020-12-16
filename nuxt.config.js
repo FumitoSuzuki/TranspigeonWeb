@@ -25,7 +25,8 @@ export default {
     { src: "~/plugins/aos", ssr: false },
     { src: "~/plugins/validate" },
     { src: "~/plugins/contentful" },
-    { src: "~/plugins/prism" }
+    { src: "~/plugins/prism" },
+    { src: "~/plugins/bootstrap-icons" }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

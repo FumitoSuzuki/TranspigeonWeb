@@ -1,11 +1,33 @@
 <template>
   <b-container>
     <b-row>
-      <b-col>
+      <b-col class="text-md-center">
+        <h2 class="mb-4">{{ content.title }}</h2>
         <ResponsiveBreak>
-          <slot />
+          <nuxt-content :document="content" />
         </ResponsiveBreak>
       </b-col>
     </b-row>
   </b-container>
 </template>
+
+<script>
+export default {
+  props: {
+    content: {
+      type: Object,
+      default: () => {},
+    },
+  },
+}
+</script>
+
+<style scoped>
+h2,
+strong {
+  color: var(--info);
+}
+.container >>> strong {
+  color: var(--info);
+}
+</style>
