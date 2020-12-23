@@ -23,6 +23,7 @@ export default {}
   background-position: center;
   background-repeat: no-repeat;
   background-color: var(--secondary);
+  color: white;
 }
 .introduction .header,
 .introduction .footer {

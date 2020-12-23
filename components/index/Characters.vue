@@ -30,6 +30,6 @@ export default {
 <style scoped>
 h3 {
   font-size: 1rem;
-  color: var(--info);
+  color: var(--primary);
 }
 </style>

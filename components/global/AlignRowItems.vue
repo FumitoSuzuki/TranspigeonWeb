@@ -39,7 +39,7 @@ export default {
         }
         const max = Math.max.apply(null, array)
         for (let j = 0; j < element.length; j++) {
-          element[j].style.height = max + 'px'
+          element[j].style.minHeight = max + 'px'
         }
       }
     },
@@ -48,7 +48,7 @@ export default {
       for (let i = 0; i < length; i++) {
         const element = this.$el.getElementsByClassName(this.className[i])
         for (let j = 0; j < element.length; j++) {
-          element[j].style.height = 'auto'
+          element[j].style.minHeight = 'auto'
         }
       }
       this.setStyleHeight()

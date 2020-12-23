@@ -16,8 +16,11 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  // css: [{ src: 'prism-themes/themes/prism-material-oceanic.css', lang: 'css' }],
-  css: [{ src: "~/node_modules/highlight.js/styles/ocean.css", lang: "css" }],
+  css: [
+    { src: "~/assets/scss/bootstrap.scss", lang: "scss" },
+    { src: "prism-themes/themes/prism-material-oceanic.css", lang: "css" }
+    // { src: "~/node_modules/highlight.js/styles/ocean.css", lang: "css" }
+  ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
@@ -41,7 +44,7 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/bootstrap
-    "bootstrap-vue/nuxt",
+    ["bootstrap-vue/nuxt", { css: false }],
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     // https://github.com/markdown-it/markdown-it

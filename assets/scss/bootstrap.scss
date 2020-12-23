@@ -1,0 +1,13 @@
+$primary: #17a2b8;
+$secondary: #121123;
+$info: #007bff;
+$white: #fff;
+
+@import 'variables';
+
+// Then include the following
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-vue/src/index.scss';
+
+// And define any of your custom or additional CSS/SCSS here,
+// or via an @import

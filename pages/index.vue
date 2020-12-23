@@ -1,8 +1,7 @@
 <template>
   <section id="main">
-    <FullsizeBox :ratio="100" class="p-2">
-      <Introduction class="text-center">
-        <template #header></template>
+    <FullsizeBox class="p-2 scroll-snap-start">
+      <Introduction class="text-center bg_star">
         <template #body>
           <nuxt-content :document="intro" />
         </template>
@@ -12,20 +11,26 @@
       </Introduction>
     </FullsizeBox>
     <article>
-      <section id="leadcopy-block" class="p-5">
-        <LeadCopy :content="leadcopy" />
+      <section class="scroll-snap-start">
+        <div id="leadcopy-block" class="p-5">
+          <LeadCopy :content="leadcopy" />
+        </div>
+        <div class="p-5 bg-white text-secondary">
+          <Characters :contents="characters" />
+        </div>
       </section>
-      <section id="characters-block" class="p-5">
-        <Characters :contents="characters" />
-      </section>
-      <section>
+      <section class="scroll-snap-start">
         <PlanTable :contents="plantable" />
       </section>
       <Topics :rows="topics" v-pre />
       <Others :contents="others" class="my-3" v-pre />
     </article>
-    <aside class="bg-info py-5">
-      <Information />
+    <aside class="py-5 bg-secondary text-white scroll-snap-start">
+      <Information>
+        <template #procedure>
+          <nuxt-content :document="information" />
+        </template>
+      </Information>
     </aside>
   </section>
 </template>
@@ -39,6 +44,7 @@ export default {
     const plantable = await $content('plantable').sortBy('slug').fetch()
     const topics = await $content('topics').sortBy('slug').fetch()
     const others = await $content('others').fetch()
+    const information = await $content('information').fetch()
     return {
       intro,
       leadcopy,
@@ -46,16 +52,23 @@ export default {
       plantable,
       topics: [topics.splice(0, 2), topics],
       others,
+      information,
     }
   },
 }
 </script>
 
 <style scoped>
-#main {
-  background-color: white;
+.bg_star {
+  background-repeat: no-repeat;
+  background-image: url('/image/bg_star.svg');
+  background-size: cover;
+  background-position: center;
 }
 #leadcopy-block {
   background-color: #eee;
+}
+.scroll-snap-start {
+  scroll-snap-align: start;
 }
 </style>

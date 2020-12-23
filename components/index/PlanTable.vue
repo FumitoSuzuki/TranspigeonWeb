@@ -1,8 +1,8 @@
 <template>
   <div>
-    <b-container fluid class="bg-info">
+    <b-container fluid class="bg-primary pt-5">
       <b-row align-v="center">
-        <b-col class="text-center py-5">
+        <b-col class="text-center mb-5">
           <h2>Comparison with Other Frameworks</h2>
         </b-col>
       </b-row>
@@ -16,8 +16,8 @@
         </b-col>
       </b-row>
     </b-container>
-    <b-container>
-      <b-row align-v="center" class="py-5">
+    <b-container class="p-5">
+      <b-row align-v="center">
         <b-col
           v-for="(item, key) in contents"
           :key="key"
@@ -26,13 +26,20 @@
           class="text-center body"
         >
           <h3 class="title">
-            <b-badge pill variant="info">{{ item.title }}</b-badge>
+            <b-badge pill variant="primary">{{ item.title }}</b-badge>
           </h3>
           <p class="price">
             <span>{{ item.price }}</span>
             point
           </p>
           <nuxt-content :document="item" />
+        </b-col>
+      </b-row>
+      <b-row align-h="center">
+        <b-col md="7">
+          <b-button block to="/production-support" variant="primary">
+            Learn more
+          </b-button>
         </b-col>
       </b-row>
     </b-container>
